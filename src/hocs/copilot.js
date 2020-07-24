@@ -173,9 +173,11 @@ const copilot = ({
         }
       }
 
-      stop = async (): void => {
+      stop = async (unregisterEvent?: boolean): void => {
         await this.setVisibility(false);
-        this.eventEmitter.emit('stop');
+        if(!unregisterEvent){
+          this.eventEmitter.emit('stop');
+        }
       }
 
       async moveToCurrentStep(): void {
